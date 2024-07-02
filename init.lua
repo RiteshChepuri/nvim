@@ -80,6 +80,16 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 vim.keymap.set({ "n", "x" }, "H", "^")
 vim.keymap.set({ "n", "x" }, "L", "g_")
 
+-- Use Alt with h,j,k,l to navigate in insert mode without using Arrow keys
+vim.keymap.set("i", "<A-h>", "<Left>")
+vim.keymap.set("i", "<A-l>", "<Right>")
+vim.keymap.set("i", "<A-j>", "<Up>")
+vim.keymap.set("i", "<A-k>", "<Down>")
+
+-- Shift text in visual mode
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
 -- when in a comment and you press o to go into a new line, don't make that line a comment line.
 local comment_group = vim.api.nvim_create_augroup("fix comment enter", { clear = true })
 vim.api.nvim_create_autocmd("BufEnter", {
